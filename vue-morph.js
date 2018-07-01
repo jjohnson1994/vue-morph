@@ -1,9 +1,9 @@
-import Btn from 'src/components/Btn.vue';
-import CheckBox from 'src/components/CheckBox.vue';
-import EditText from 'src/components/EditText.vue';
-import LinearLayout from 'src/components/LinearLayout.vue';
-import ScrollView from 'src/components/ScrollView.vue';
-import TextView from 'src/components/TextView.vue';
+import Btn from './src/components/Btn.vue';
+import CheckBox from './src/components/CheckBox.vue';
+import EditText from './src/components/EditText.vue';
+import LinearLayout from './src/components/LinearLayout.vue';
+import ScrollView from './src/components/ScrollView.vue';
+import TextView from './src/components/TextView.vue';
 
 const VueMorph = {
   install(Vue) {
