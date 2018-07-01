@@ -5,7 +5,7 @@ import LinearLayout from 'src/components/LinearLayout.vue';
 import ScrollView from 'src/components/ScrollView.vue';
 import TextView from 'src/components/TextView.vue';
 
-const MableUI = {
+const VueMorph = {
   install(Vue) {
     Vue.component(Btn.name, Btn);
     Vue.component(CheckBox.name, CheckBox);
@@ -16,4 +16,4 @@ const MableUI = {
   },
 };
 
-export default MableUI;
+export default VueMorph;
