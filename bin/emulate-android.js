@@ -4,6 +4,7 @@ const clear = require('clear');
 const figlet = require('figlet');
 
 const avd = require("../lib/avd");
+const files = require('../lib/files');
 
 clear();
 

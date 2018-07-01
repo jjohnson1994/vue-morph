@@ -10,10 +10,10 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "bin": {
+    "build:android": "bin/build-android.js",
     "create-app:android": "bin/create-app-android.js",
-    "build-app:android": "bin/build-app-android.js",
     "emulate:android": "bin/emulate-android.js",
-    "build:android": "bin/build-android.js"
+    "install:android": "bin/install-android.js"
   },
   "typings": "types/index.d.ts",
   "main": "vue-morph.js",

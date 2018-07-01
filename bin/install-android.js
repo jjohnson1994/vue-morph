@@ -1,16 +1,9 @@
 #!/usr/bin/env node
-
-// https://github.com/sitepoint-editors/ginit
-
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const Spinner = require('cli-spinner').Spinner;
-const simpleGit = require('simple-git')();
 
-// const github = require('./lib/github');
-// const repo = require('./lib/repo');
-const inquirer = require('../lib/inquirer');
+const gradle = require("../lib/gradle");
 const files = require('../lib/files');
 
 clear();
@@ -30,15 +23,7 @@ if (!files.directoryExists('apps/android')) {
 }
 
 const run = async () => {
-  const settings = await inquirer.askNativeAppDetails();
-
-  const spinner = new Spinner('%s Creating new Android project...');
-  spinner.setSpinnerString('|/-\\');
-  spinner.start();
-
-  await simpleGit.clone('https://github.com/jjohnson1994/vue-morph-android', 'apps/android');
-
-  spinner.stop();
-}
+  await gradle.installDebug();
+};
 
 run();

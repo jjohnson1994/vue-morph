@@ -7,16 +7,21 @@ Each command should be prefixed with either `yarn` or `npm`.
 ## Commands
 
 ``` console
+build-app:android
+```
+Build the Vue project and bundle it with the Native app.
+
+``` console
 create-app:android
 ```
 Create a new Android App in *app/android*
 
 ``` console
-build-app:android
-```
-Build the Vue project and bundle it in into the Android app.
-
-``` console
 emulate:android
 ```
 Start an Android emulator.
+
+``` console
+install:android
+```
+Install the app on a conneced device or emulator.
