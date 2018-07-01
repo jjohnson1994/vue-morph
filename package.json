@@ -12,7 +12,8 @@
   "bin": {
     "create-app:android": "bin/create-app-android.js",
     "build-app:android": "bin/build-app-android.js",
-    "emulate:android": "bin/emulate-android.js"
+    "emulate:android": "bin/emulate-android.js",
+    "build:android": "bin/build-android.js"
   },
   "typings": "types/index.d.ts",
   "main": "vue-morph.js",
