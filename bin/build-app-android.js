@@ -23,8 +23,9 @@ console.log(
 );
 
 // Check for existing Android app
-if (files.directoryExists('apps/android')) {
-  console.log(chalk.red('Android app already exists!'));
+if (!files.directoryExists('apps/android')) {
+  console.log(chalk.red('Can\' find an Android App! You need to add an Android app to the Project.'));
+  console.log('Try running `yarn create-app:android`');
   process.exit();
 }
 

@@ -1,5 +1,8 @@
 # Vue-Morph
 
+## CLI
+- [CLI Commands](CLI.md)
+
 ## Building
 - [Android](Building.md)
 
