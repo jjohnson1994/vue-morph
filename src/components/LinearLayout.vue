@@ -9,6 +9,7 @@
 //
 
 export default {
+  name: 'LinearLayout',
   props: {
     styles: {
       type: Object,

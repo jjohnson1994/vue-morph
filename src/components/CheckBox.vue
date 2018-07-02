@@ -9,6 +9,7 @@
 //
 
 export default {
+  name: 'CheckBox',
   props: {
     text: {
       required: false,

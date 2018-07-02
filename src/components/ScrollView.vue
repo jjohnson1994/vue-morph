@@ -9,6 +9,7 @@
 //
 
 export default {
+  name: 'ScrollView',
   props: {
     styles: {
       type: Object,

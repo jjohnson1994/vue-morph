@@ -9,6 +9,7 @@
 //
 
 export default {
+  name: 'EditText',
   props: {
     styles: {
       type: Object,

@@ -9,6 +9,7 @@
 //
 
 export default {
+  name: 'TextView',
   props: {
     text: {
       type: String | Number,
