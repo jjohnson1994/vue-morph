@@ -20,6 +20,7 @@ export default {
   methods: {
     describe() {
       return {
+        tag: 'LinearLayout',
         uid: this._uid,
         parent: this.$parent._uid,
         ...this.styles,

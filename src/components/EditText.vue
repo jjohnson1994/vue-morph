@@ -29,6 +29,7 @@ export default {
     },
     describe() {
       return {
+        tag: 'EditText',
         uid: this._uid,
         parent: this.$parent._uid,
         text: this.text,

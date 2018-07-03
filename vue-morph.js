@@ -17,10 +17,7 @@ window.uidToVueComponentMap = [];
  */
 window.buildVNodeTree = function (root) {
   console.log('parse: ', root);
-
-  const styles = root.styles;
-  const text = root.text;
-  const value = root.value;
+  
   const children = root.$children;
 
   let tag;

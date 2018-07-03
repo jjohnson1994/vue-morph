@@ -34,6 +34,7 @@ export default {
     },
     describe() {
       return {
+        tag: 'CheckBox',
         uid: this._uid,
         parent: this.$parent._uid,
         checked: this.checked,

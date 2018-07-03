@@ -28,6 +28,7 @@ export default {
   methods: {
     describe() {
       return {
+        tag: 'TextView',
         uid: this._uid,
         parent: this.$parent._uid,
         text: this.text,

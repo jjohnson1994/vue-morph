@@ -23,6 +23,7 @@ export default {
     },
     describe() {
       return {
+        tag: 'Btn',
         uid: this._uid,
         parent: this.$parent._uid,
         text: this.text,
