@@ -1,12 +1,12 @@
 <template>
   <label>
     <input
-      type="checkbox" 
       v-model="checked"
+      type="checkbox"
       @input="$emit('input', checked)"
       @change="$('change', checked)"
-    />
-      {{ text }}
+    >
+    {{ text }}
   </label>
 </template>
 
@@ -20,7 +20,7 @@ export default {
       default: false,
     },
     text: {
-      type: String,
+      type: [Boolean, String],
       required: false,
       default: '',
     },
@@ -37,8 +37,26 @@ export default {
   },
   watch: {
     value() {
-      this.checked = JSON.parse(this.value); 
+      this.checked = JSON.parse(this.value);
     },
+  },
+  created() {
+    window.uidToVueComponentMap.push({
+      uid: this._uid,
+      component: this,
+    });
+
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  updated() {
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  beforeDestroy() {
+    Android.onComponentDestroyed(
+      JSON.stringify({
+        uid: this._uid,
+      }),
+    );
   },
   methods: {
     setValue(checked) {
@@ -55,22 +73,6 @@ export default {
         styles: this.styles,
       };
     },
-  },
-  created() {
-    window.uidToVueComponentMap.push({
-      uid: this._uid,
-      component: this,
-    });
-
-    Android.onComponentUpdated(JSON.stringify(this.describe()));
-  },
-  updated() {
-    Android.onComponentUpdated(JSON.stringify(this.describe()));
-  },
-  beforeDestroy() {
-    Android.onComponentDestroyed(JSON.stringify({
-      uid: this._uid,
-    }));
   },
 };
 </script>
