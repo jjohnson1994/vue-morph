@@ -1,5 +1,5 @@
 <template>
-  <button>{{ text }}</button>
+  <button @click="$emit('click')">{{ text }}</button>
 </template>
 
 <script>
@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     onClick() {
+      this.$emit('click');
       Android.showToast('OnClick, Called Natively');
     },
     describe() {
@@ -27,12 +28,25 @@ export default {
         uid: this._uid,
         parent: this.$parent._uid,
         text: this.text,
-        ...this.styles,
+        styles: this.styles,
       };
     },
   },
+  created() {
+    window.uidToVueComponentMap.push({
+      uid: this._uid,
+      component: this,
+    });
+console.log(this);
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
   updated() {
-    Android.onAppUpdate(JSON.stringify(this.describe()));
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  beforeDestroy() {
+    Android.onComponentDestroyed(JSON.stringify({
+      uid: this._uid,
+    }));
   },
 };
 </script>

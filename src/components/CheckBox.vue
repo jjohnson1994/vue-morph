@@ -1,17 +1,26 @@
 <template>
-  <label><input type="checkbox" :value="checked"/>{{ text }}</label>
+  <label>
+    <input
+      type="checkbox" 
+      v-model="checked"
+      @input="$emit('input', checked)"
+      @change="$('change', checked)"
+    />
+      {{ text }}
+  </label>
 </template>
 
 <script>
-//
-//
-//
-//
-
 export default {
   name: 'CheckBox',
   props: {
+    value: {
+      type: [Boolean, String],
+      required: false,
+      default: false,
+    },
     text: {
+      type: String,
       required: false,
       default: '',
     },
@@ -26,9 +35,13 @@ export default {
       checked: this.value,
     };
   },
+  watch: {
+    value() {
+      this.checked = JSON.parse(this.value); 
+    },
+  },
   methods: {
     setValue(checked) {
-      console.log('is checked', checked, this.value);
       this.checked = checked;
       this.$emit('input', checked);
     },
@@ -39,13 +52,25 @@ export default {
         parent: this.$parent._uid,
         checked: this.checked,
         text: this.text,
-        ...this.styles,
+        styles: this.styles,
       };
     },
   },
+  created() {
+    window.uidToVueComponentMap.push({
+      uid: this._uid,
+      component: this,
+    });
+
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
   updated() {
-    console.log('Checkbox, Passing Description', this.describe());
-    Android.onAppUpdate(JSON.stringify(this.describe()));
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  beforeDestroy() {
+    Android.onComponentDestroyed(JSON.stringify({
+      uid: this._uid,
+    }));
   },
 };
 </script>

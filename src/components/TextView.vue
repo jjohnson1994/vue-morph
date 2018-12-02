@@ -22,9 +22,6 @@ export default {
       default: () => {},
     },
   },
-  updated() {
-    Android.onAppUpdate(JSON.stringify(this.describe()));
-  },
   methods: {
     describe() {
       return {
@@ -32,9 +29,25 @@ export default {
         uid: this._uid,
         parent: this.$parent._uid,
         text: this.text,
-        ...this.styles,
+        styles: this.styles,
       };
     },
+  },
+  created() {
+    window.uidToVueComponentMap.push({
+      uid: this._uid,
+      component: this,
+    });
+
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  updated() {
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  beforeDestroy() {
+    Android.onComponentDestroyed(JSON.stringify({
+      uid: this._uid,
+    }));
   },
 };
 </script>

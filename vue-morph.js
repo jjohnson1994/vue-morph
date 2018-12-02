@@ -4,6 +4,7 @@ import EditText from './src/components/EditText.vue';
 import LinearLayout from './src/components/LinearLayout.vue';
 import ScrollView from './src/components/ScrollView.vue';
 import TextView from './src/components/TextView.vue';
+import RadioGroup from './src/components/RadioGroup.vue';
 
 //TODO, better way than adding to window?
 
@@ -59,7 +60,7 @@ window.dispatchOnClick = function (uid) {
     return map.uid == uid;
   })[0];
 
-  map.component.$vnode.data.on.click();
+  map.component.onClick();
 }
 
 window.dispatchOnChange = function (params) {
@@ -69,6 +70,7 @@ window.dispatchOnChange = function (params) {
     return map.uid == uid;
   })[0];
 
+  console.log(uid ,value ,map, params );
   map.component.setValue(value);
 }
 
@@ -80,6 +82,7 @@ const VueMorph = {
     Vue.component(LinearLayout.name, LinearLayout);
     Vue.component(ScrollView.name, ScrollView);
     Vue.component(TextView.name, TextView);
+    Vue.component(RadioGroup.name, RadioGroup);
   },
 };
 
