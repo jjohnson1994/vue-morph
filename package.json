@@ -49,6 +49,7 @@
     "simple-git": "^1.96.0",
     "touch": "^3.1.0",
     "ts-jest": "^22.4.6",
+    "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [

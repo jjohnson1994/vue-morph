@@ -1,5 +1,7 @@
 <template>
-  <button @click="$emit('click')">{{ text }}</button>
+  <button @click="$emit('click')">
+    {{ text }}
+  </button>
 </template>
 
 <script>
@@ -11,16 +13,33 @@ export default {
       required: false,
       default: '',
     },
-    styles: {
+    stylez: {
       type: Object,
       required: false,
       default: () => {},
     },
   },
+  created() {
+    window.uidToVueComponentMap.push({
+      uid: this._uid,
+      component: this,
+    });
+
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  updated() {
+    Android.onComponentUpdated(JSON.stringify(this.describe()));
+  },
+  beforeDestroy() {
+    Android.onComponentDestroyed(
+      JSON.stringify({
+        uid: this._uid,
+      }),
+    );
+  },
   methods: {
     onClick() {
       this.$emit('click');
-      Android.showToast('OnClick, Called Natively');
     },
     describe() {
       return {
@@ -31,22 +50,6 @@ export default {
         styles: this.styles,
       };
     },
-  },
-  created() {
-    window.uidToVueComponentMap.push({
-      uid: this._uid,
-      component: this,
-    });
-console.log(this);
-    Android.onComponentUpdated(JSON.stringify(this.describe()));
-  },
-  updated() {
-    Android.onComponentUpdated(JSON.stringify(this.describe()));
-  },
-  beforeDestroy() {
-    Android.onComponentDestroyed(JSON.stringify({
-      uid: this._uid,
-    }));
   },
 };
 </script>

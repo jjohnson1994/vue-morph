@@ -3,10 +3,6 @@
 </template>
 
 <script>
-//
-//
-//
-//
 
 export default {
   name: 'ScrollView',
