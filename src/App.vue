@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <router-link :to="{ name: 'pageOne' }">Go to Foo</router-link>
-    <scroll-view>
-      <router-view></router-view>
-    </scroll-view>
+    <btn text="Page One" @click="$router.push({ name: 'pageOne' })"/>
+    <btn text="Page Two" @click="$router.push({ name: 'pageTwo' })"/>
+    <router-view />
   </div>
 </template>
 
@@ -44,13 +43,7 @@ export default class App extends Vue {
     Android.showToast(message);
   };
 
-  created() {
-    window.Android = {
-      onComponentUpdated: () => {},
-    };
-    
-    this.$router.push({ name: 'app' });
-  }
+  created() {}
 }
 </script>
 
