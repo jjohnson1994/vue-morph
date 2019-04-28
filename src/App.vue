@@ -1,50 +1,54 @@
 <template>
   <div id="app">
-    <btn text="Page One" @click="$router.push({ name: 'pageOne' })"/>
-    <btn text="Page Two" @click="$router.push({ name: 'pageTwo' })"/>
-    <router-view />
+    <Btn
+      text="Page One"
+      @click="$router.push({ name: 'pageOne' })"
+    />
+    <Btn
+      text="Page Two"
+      @click="$router.push({ name: 'pageTwo' })"
+    />
+    <RouterView />
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import RadioGroup from "./components/RadioGroup.vue";
-import TextView from "./components/TextView.vue";
-import ScrollView from "./components/ScrollView.vue";
-import EditText from "./components/EditText.vue";
-import Btn from "./components/Btn.vue";
-
-@Component({
-  components: {
-    RadioGroup,
-    TextView,
-    ScrollView,
-    EditText,
-    Btn
-  }
-})
-export default class App extends Vue {
-  /** Radio Group */
-  private radioGroupOptions = ["Option 1", "Option 2", "Option 3"];
-  private radioGroupSelection: String = "Option 3";
-
-  /** Edit Text */
-  private inputValue: String = "Input Value";
-
-  /** Button */
-  private clickCount: Number = 0;
-
-  /** CheckBox */
-  private checkbox: Boolean = false;
-
-  /** Methods **/
-  public showToast: Const = message => {
-    console.log("android", message);
-    Android.showToast(message);
-  };
-
-  created() {}
-}
+<script>
+export default {
+  data() {
+    return {
+      /** Sidenav Items * */
+      sideNavItems: [
+        {
+          title: 'Page One',
+          route: 'pageOne',
+        },
+        {
+          title: 'Page Two',
+          route: 'pageTwo',
+        },
+      ],
+      /** Radio Group */
+      radioGroupOptions: ['Option 1', 'Option 2', 'Option 3'],
+      radioGroupSelection: 'Option 3',
+      /** Edit Text */
+      inputValue: 'Input Value',
+      /** Button */
+      clickCount: 0,
+      /** CheckBox */
+      checkbox: false,
+    };
+  },
+  created() {
+    this.$vueMorph.setSideNavItems(this.sideNavItems);
+  },
+  methods: {
+    /** Methods * */
+    showToast: (message) => {
+      console.log('android', message);
+      Android.showToast(message);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
